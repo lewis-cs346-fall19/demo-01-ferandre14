@@ -2,16 +2,16 @@ import socket
 
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-addr = ("localhost", 15555)
+addr = ("localhost", 15556)
 sock.bind(addr)
 
 sock.listen(5)
 
 msg = ''
 
+(connectedSock, clientAddress) = sock.accept()
 
 while (True):
-    (connectedSock, clientAddress) = sock.accept()
     try:
         msg = connectedSock.recv(1024).decode()
         print('Received message: '+msg)

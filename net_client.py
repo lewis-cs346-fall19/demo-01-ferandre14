@@ -1,7 +1,7 @@
 import socket
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-addr = ("localhost", 15555)
+addr = ("localhost", 15556)
 sock.connect(addr)
 msg =''
 #for i in range(100):
