@@ -19,4 +19,10 @@ while (True):
         print('End of received message, closing socket.')
         connectedSock.close()
     reply = 'I got the mesage: '+msg
-    connectedSock.sendall(reply.encode()) #send message back to client 
+
+    try: #sendall will throw a brokenpipe error when connection is closed
+        connectedSock.sendall(reply.encode()) #send message back to client 
+    except (BrokenPipeError):
+        print('Current connection BrokenPipeError, accepting new connection')
+        connectedSock, clientAddress = sock.accept()
+        
